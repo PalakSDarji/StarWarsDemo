@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">StarWarsDemo</string>
+    <string name="check_your_internet">Check your internet!</string>
+</resources>
