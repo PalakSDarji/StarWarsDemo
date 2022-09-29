@@ -24,7 +24,7 @@ class CharacterSource @Inject constructor(val apiInterface: ApiInterface) :
             val response = apiInterface.getCharacters(nextPageNo)
 
             response?.next?.let {
-                nextPageNo = Uri.parse(it).getQueryParameter(Constants.PAGE_QUERY_PARAM)?.toInt()
+                nextPageNo = Uri.parse(it)?.getQueryParameter(Constants.PAGE_QUERY_PARAM)?.toInt()
                     ?: Constants.FIRST_PAGE_NO
             } ?: kotlin.run {
                 nextPageNo = null

@@ -5,20 +5,20 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Character(
-    val birth_year: String,
-    val created: String,
-    val edited: String,
-    val eye_color: String,
-    val films: List<String>,
-    val gender: String,
-    val hair_color: String,
-    val height: String,
-    val homeworld: String,
-    val mass: String,
-    val name: String,
-    val skin_color: String,
-    val species: List<String>,
-    val starships: List<String>,
-    val url: String,
-    val vehicles: List<String>
+    var birth_year: String? = null,
+    var created: String? = null,
+    var edited: String? = null,
+    var eye_color: String? = null,
+    var films: List<String>? = null,
+    var gender: String? = null,
+    var hair_color: String? = null,
+    var height: String? = null,
+    var homeworld: String? = null,
+    var mass: String? = null,
+    var name: String? = null,
+    var skin_color: String? = null,
+    var species: List<String>? = null,
+    var starships: List<String>? = null,
+    var url: String? = null,
+    var vehicles: List<String>? = null
 ) : Parcelable
