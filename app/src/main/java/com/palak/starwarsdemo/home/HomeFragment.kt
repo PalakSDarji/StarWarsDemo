@@ -9,10 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.palak.starwarsdemo.R
 import com.palak.starwarsdemo.databinding.FragmentHomeBinding
+import com.palak.starwarsdemo.home.paging.LoaderAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -20,6 +22,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var navController: NavController
     private val homeViewModel by activityViewModels<HomeViewModel>()
+    private var adapter: CharacterAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,11 +39,36 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         navController = findNavController()
+        loadCharacterList()
+    }
 
-        homeViewModel.fetchCharacters()
+    private fun loadCharacterList() {
+        binding.rvCharacters.also {
+            it.layoutManager = LinearLayoutManager(context)
+            adapter = CharacterAdapter { _, pos ->
 
-        homeViewModel.charactersLiveData.observe(viewLifecycleOwner){
-            Timber.d("List<Character> fetched in fragment : $it")
+            }
+
+            it.adapter = adapter?.withLoadStateHeaderAndFooter(
+                header = LoaderAdapter(),
+                footer = LoaderAdapter()
+            )
+            it.isNestedScrollingEnabled = false
+            it.addItemDecoration(
+                DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            )
+        }
+
+        homeViewModel.characterList.observe(viewLifecycleOwner){
+            adapter?.submitData(lifecycle,it)
+        }
+
+        adapter?.addLoadStateListener {
+            binding.hasData = adapter?.itemCount!! > 0
+        }
+
+        binding.tryAgain.setOnClickListener {
+            adapter?.retry()
         }
     }
 }
