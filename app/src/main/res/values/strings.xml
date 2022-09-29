@@ -5,4 +5,9 @@
     <string name="something_went_wrong">Something went wrong!</string>
     <string name="characters_title">Star Wars Characters</string>
     <string name="try_again">Try Again</string>
+    <string name="char_name">Name : %s</string>
+    <string name="kg">Mass : %1$d KG</string>
+    <string name="meters">Height : %.2f meters</string>
+    <string name="not_available">not available</string>
+    <string name="created_date">Created Date : %s</string>
 </resources>

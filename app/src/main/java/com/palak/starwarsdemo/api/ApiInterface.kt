@@ -9,7 +9,7 @@ interface ApiInterface {
 
     @GET(Constants.GET_CHARACTERS)
     suspend fun getCharacters(
-        @Query("page") pageNo: Int
+        @Query("page") pageNo: Int?
     ): CharacterListResponse?
 }
 

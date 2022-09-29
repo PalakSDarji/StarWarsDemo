@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background_dark">#222222</color>
+    <color name="item_txt_color">#FFFFFF</color>
+    <color name="lbl_color">#DDBB00</color>
+    <color name="data_value_txt_color">#FFFFFF</color>
 </resources>

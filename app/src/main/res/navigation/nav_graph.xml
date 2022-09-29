@@ -7,5 +7,21 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.palak.starwarsdemo.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment">
+            <argument
+                android:name="character"
+                app:argType="com.palak.starwarsdemo.models.Character" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailFragment"
+        android:name="com.palak.starwarsdemo.details.CharacterDetailFragment"
+        android:label="CharacterDetailFragment">
+        <argument
+            android:name="character"
+            app:argType="com.palak.starwarsdemo.models.Character" />
+    </fragment>
 </navigation>

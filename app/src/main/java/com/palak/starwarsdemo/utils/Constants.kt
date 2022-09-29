@@ -11,4 +11,7 @@ object Constants {
     val CHARACTER_PAGE_SIZE: Int = 1
     val PAGE_QUERY_PARAM: String = "page"
 
+    val CHARACTER_CREATED_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
+    val CHARACTER_CREATED_DATE_FORMAT_PRINT = "yyyy-MM-dd HH:mm"
+
 }

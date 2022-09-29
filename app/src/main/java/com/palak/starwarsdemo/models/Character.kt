@@ -1,5 +1,9 @@
 package com.palak.starwarsdemo.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Character(
     val birth_year: String,
     val created: String,
@@ -17,4 +21,4 @@ data class Character(
     val starships: List<String>,
     val url: String,
     val vehicles: List<String>
-)
+) : Parcelable

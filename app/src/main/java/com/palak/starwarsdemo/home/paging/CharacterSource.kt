@@ -19,13 +19,15 @@ class CharacterSource @Inject constructor(val apiInterface: ApiInterface) :
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Character> {
         return try {
-            var nextPageNo = params.key ?: Constants.FIRST_PAGE_NO
+            var nextPageNo : Int? = params.key ?: Constants.FIRST_PAGE_NO
 
             val response = apiInterface.getCharacters(nextPageNo)
 
             response?.next?.let {
                 nextPageNo = Uri.parse(it).getQueryParameter(Constants.PAGE_QUERY_PARAM)?.toInt()
                     ?: Constants.FIRST_PAGE_NO
+            } ?: kotlin.run {
+                nextPageNo = null
             }
 
             response?.results?.let { listOfChars ->
