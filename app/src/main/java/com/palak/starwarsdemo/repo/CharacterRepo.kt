@@ -6,6 +6,9 @@ import com.palak.starwarsdemo.api.ApiInterface
 import com.palak.starwarsdemo.home.paging.CharacterSource
 import javax.inject.Inject
 
+/**
+ * Repository layer is used to define source of the data.
+ */
 class CharacterRepo @Inject constructor(private val apiInterface: ApiInterface) {
 
     fun getCharsList() =

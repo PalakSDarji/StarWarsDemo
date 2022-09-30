@@ -3,6 +3,9 @@ package com.palak.starwarsdemo.models
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
+/**
+ * Modell to represent character data.
+ */
 @Parcelize
 data class Character(
     var birth_year: String? = null,

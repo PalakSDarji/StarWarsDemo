@@ -1,21 +1,11 @@
 package com.palak.starwarsdemo.utils
 
 import android.annotation.SuppressLint
-import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.palak.starwarsdemo.R
 import java.text.SimpleDateFormat
 import java.util.*
-
-@BindingAdapter("isGone")
-fun bindIsGone(view: View, isGone: Boolean) {
-    view.visibility = if (isGone) {
-        View.GONE
-    } else {
-        View.VISIBLE
-    }
-}
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("height")

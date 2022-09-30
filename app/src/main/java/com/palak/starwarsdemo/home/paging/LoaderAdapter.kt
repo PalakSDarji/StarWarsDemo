@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.palak.starwarsdemo.R
 import com.palak.starwarsdemo.databinding.ItemLoadingBinding
 
-class LoaderAdapter(val retry : ()->Unit) : LoadStateAdapter<LoaderAdapter.LoaderViewHolder>() {
+/**
+ * This adapter is responsible to load the data as user scrolls down the list.
+ */
+class LoaderAdapter(private val retry : ()->Unit) : LoadStateAdapter<LoaderAdapter.LoaderViewHolder>() {
 
     class LoaderViewHolder(private val binding: ItemLoadingBinding, private val retry : ()->Unit) :
         RecyclerView.ViewHolder(binding.root) {

@@ -8,7 +8,10 @@ import com.palak.starwarsdemo.models.Character
 import com.palak.starwarsdemo.utils.Constants
 import javax.inject.Inject
 
-class CharacterSource @Inject constructor(val apiInterface: ApiInterface) :
+/**
+ * This class acts as source of character data, It loads data as it is required.
+ */
+class CharacterSource @Inject constructor(private val apiInterface: ApiInterface) :
     PagingSource<Int, Character>() {
     override fun getRefreshKey(state: PagingState<Int, Character>): Int? {
         return state.anchorPosition?.let { anchorPosition ->

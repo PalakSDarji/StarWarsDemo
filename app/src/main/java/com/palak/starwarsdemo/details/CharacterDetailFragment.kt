@@ -12,6 +12,9 @@ import com.palak.starwarsdemo.R
 import com.palak.starwarsdemo.databinding.FragmentCharaceterDetailBinding
 import com.palak.starwarsdemo.models.Character
 
+/**
+ * Screen that loads details of the character.
+ */
 class CharacterDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentCharaceterDetailBinding

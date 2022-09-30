@@ -28,7 +28,7 @@ class CharacterSourceTest {
     @Test
     fun shouldLoadDataWhenPassedCorrectly() = runTest {
 
-        //Passing next url is necessary otherwise, code breaks testcase. Pass it as dummy value.
+        //Passing next url is necessary otherwise, code breaks the testcase. Pass it as dummy value.
         `when`(apiInterface.getCharacters(1)).thenReturn(
             CharacterListResponse(
                 results = mockChars,
@@ -52,6 +52,33 @@ class CharacterSourceTest {
                     placeholdersEnabled = true
                 )
             )
+        )
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun shouldLoadErrorWhenPassedResultIsNull() = runTest {
+
+        `when`(apiInterface.getCharacters(1)).thenReturn(
+            CharacterListResponse(
+                results = null,
+                count = 1,
+                next = "",
+                previous = ""
+            )
+        )
+        val source = CharacterSource(apiInterface)
+
+        //Match the exception object here, but both are diff individual objects, we are matching localizedMessage.
+        assertEquals(
+            PagingSource.LoadResult.Error<Any,Any>(Exception(Throwable())).throwable.localizedMessage,
+            (source.load(
+                PagingSource.LoadParams.Refresh(
+                    key = null,
+                    loadSize = 2,
+                    placeholdersEnabled = true
+                )
+            ) as PagingSource.LoadResult.Error).throwable.localizedMessage
         )
     }
 }
